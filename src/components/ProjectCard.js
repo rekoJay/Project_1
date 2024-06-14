@@ -1,31 +1,42 @@
+// src/components/ProjectCard.js
 import React from "react";
 import { Link } from "react-router-dom";
 
 function ProjectCard({ project }) {
+  if (!project) {
+    return null; // project가 정의되지 않으면 아무것도 렌더링하지 않음
+  }
+
   return (
-    <div className="project-card">
+    <div className="card project-card">
       <Link to={`/projects/${project.id}`}>
         <img
           src={project.imageUrl}
           alt={project.title}
-          className="project-image"
+          className="card-img-top project-image"
         />
-        <h2>{project.title}</h2>
+        <div className="card-body">
+          <h5 className="card-title">{project.title}</h5>
+        </div>
       </Link>
-      <p>{project.description}</p>
-      <ul>
-        {project.technologies.map((tech, index) => (
-          <li key={index}>{tech}</li>
-        ))}
-      </ul>
-      <a
-        href={project.githubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="github-link"
-      >
-        View on GitHub
-      </a>
+      <div className="card-body">
+        <p className="card-text">{project.description}</p>
+        <ul className="list-inline">
+          {project.technologies.map((tech, index) => (
+            <li key={index} className="list-inline-item">
+              <i className="fas fa-check"></i> {tech}
+            </li>
+          ))}
+        </ul>
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary github-link"
+        >
+          View on GitHub
+        </a>
+      </div>
     </div>
   );
 }

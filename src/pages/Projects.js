@@ -1,32 +1,41 @@
+// src/pages/Projects.js
 import React from "react";
 import ProjectCard from "../components/ProjectCard";
 
-function Projects() {
-  const projectList = [
-    {
-      id: "1",
-      title: "Project 1",
-      description: "This is the first project.",
-      technologies: ["React", "Node.js"],
-      imageUrl: "https://via.placeholder.com/150",
-      githubUrl: "https://github.com/yourusername/project1",
-    },
-    {
-      id: "2",
-      title: "Project 2",
-      description: "This is the second project.",
-      technologies: ["React", "Firebase"],
-      imageUrl: "https://via.placeholder.com/150",
-      githubUrl: "https://github.com/yourusername/project2",
-    },
-  ];
+const projects = [
+  {
+    id: 1,
+    title: "Project 1",
+    description: "This is the first project.",
+    technologies: ["React", "Node.js"],
+    githubUrl: "https://github.com/username/project1",
+    imageUrl: "path/to/image1.jpg",
+  },
+  {
+    id: 2,
+    title: "Project 2",
+    description: "This is the second project.",
+    technologies: ["React", "Firebase"],
+    githubUrl: "https://github.com/username/project2",
+    imageUrl: "path/to/image2.jpg",
+  },
+  {
+    id: 3,
+    title: "Project 3",
+    description: "This is the third project.",
+    technologies: ["React", "Express"],
+    githubUrl: "https://github.com/username/project3",
+    imageUrl: "path/to/image3.jpg",
+  },
+];
 
+function Projects() {
   return (
-    <div className="App">
+    <div className="projects">
       <h1>Projects</h1>
       <div className="project-list">
-        {projectList.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
     </div>
